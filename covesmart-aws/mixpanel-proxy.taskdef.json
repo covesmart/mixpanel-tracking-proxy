@@ -1,0 +1,52 @@
+{
+  "family": "covesmart-mixpanel-proxy",
+  "containerDefinitions": [
+      {
+          "name": "mixpanel-proxy",
+          "image": "979356869417.dkr.ecr.us-east-1.amazonaws.com/covesmart/mixpanel-proxy:latest",
+          "cpu": 0,
+          "portMappings": [
+              {
+                  "name": "mixpanel-proxy-http",
+                  "containerPort": 80,
+                  "hostPort": 0,
+                  "protocol": "tcp",
+                  "appProtocol": "http"
+              }
+          ],
+          "essential": true,
+          "environment": [],
+          "environmentFiles": [],
+          "mountPoints": [],
+          "volumesFrom": [],
+          "ulimits": [],
+          "logConfiguration": {
+              "logDriver": "awslogs",
+              "options": {
+                  "awslogs-group": "/ecs/covesmart-mixpanel-proxy",
+                  "mode": "non-blocking",
+                  "awslogs-create-group": "true",
+                  "max-buffer-size": "25m",
+                  "awslogs-region": "us-east-1",
+                  "awslogs-stream-prefix": "ecs"
+              },
+              "secretOptions": []
+          },
+          "systemControls": []
+      }
+  ],
+  "taskRoleArn": "arn:aws:iam::979356869417:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::979356869417:role/ecsTaskExecutionRole",
+  "networkMode": "bridge",
+  "volumes": [],
+  "placementConstraints": [],
+  "requiresCompatibilities": [
+      "EC2"
+  ],
+  "cpu": "1024",
+  "memory": "1024",
+  "runtimePlatform": {
+      "cpuArchitecture": "X86_64",
+      "operatingSystemFamily": "LINUX"
+  }
+}
